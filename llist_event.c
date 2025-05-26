@@ -13,7 +13,7 @@ struct event *init_list() {
 }
 
 void add_event(struct event *head, void (*event_function) (void *arg)) {
-
+	head->event_function = event_function;
 }
 
 

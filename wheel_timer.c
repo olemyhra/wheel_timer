@@ -9,6 +9,7 @@ static void *event_function(void *arg);
 wheel_timer_t *create_timer(int interval, int size) {
 
 	wheel_timer_t *tmp_wheel_timer =  (wheel_timer_t *) calloc(1, sizeof(wheel_timer_t) + (size * sizeof(struct event *)));
+
 	if (tmp_wheel_timer == NULL) {
 		fprintf(stderr, "Unable to allocate memory for the wheel timer!\n");
 		exit(EXIT_FAILURE);
@@ -21,9 +22,10 @@ wheel_timer_t *create_timer(int interval, int size) {
 
 	memset((&tmp_wheel_timer->wheel_thread), 0, sizeof(wheel_timer_t));
 	
-	struct event *tmp_pointer = tmp_wheel_timer->slots;
-
-	for (int i=0;i<size;i++) {
+	tmp_wheel_timer->slots = init_list();
+	struct event *tmp_pointer = tmp_wheel_timer->slots + 1;
+	
+	for (int i=1;i<size;i++) {
 		tmp_pointer = init_list();	
 		tmp_pointer++;
 	}
@@ -43,7 +45,7 @@ static void *event_function(void *arg)
 {
 	wheel_timer_t *timer = (wheel_timer_t *) arg;
 	while(1) {
-		printf("Wheel timer property wheel size is %d\n", timer->wheel_size);
+		timer->slots->event_function(NULL);
 		sleep(1);
 	}
 	return NULL;
