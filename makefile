@@ -5,8 +5,8 @@ DEPS = llist_event.h wheel_timer.h
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-wt:	wt.o llist_event.o wheel_timer.o
-	$(CC) $(CFLAGS1) wt.o llist_event.o wheel_timer.o -o $@
+wt:	wt.o llist_event.o wheel_timer.o utility.o
+	$(CC) $(CFLAGS1) wt.o llist_event.o wheel_timer.o utility.o -o $@
 
 clean:
 	rm -f  wt wt.o llist_event.o wheel_timer.o
