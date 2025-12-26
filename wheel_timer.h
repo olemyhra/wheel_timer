@@ -10,7 +10,7 @@ typedef struct _wheel_timer_t {
 	int wheel_size;			/* Total number of slots in the wheel */
 	int current_cycle_no;		/* Number of rotations the clock has completed, R value */
 	pthread_t wheel_thread;		/* Wheel timer thread */
-	struct event *slots;		/* Linked list attached to the slots of the wheel timer, size is set by wheel_size */
+	struct event **slots;		/* Linked list attached to the slots of the wheel timer, size is set by wheel_size */
 	
 } wheel_timer_t;
 
