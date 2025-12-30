@@ -17,5 +17,7 @@ typedef struct _wheel_timer_t {
 wheel_timer_t *create_timer(int interval, int size);
 void start_timer(wheel_timer_t *timer);
 
+void slot_scheduler(void (*event_function) (void *arg), int interval, 
+		int arg_size, wheel_timer_t *timer);
 
 #endif

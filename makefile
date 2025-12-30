@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS1 = -Wall -Werror -O2 -g3 -std=c17 -pedantic
+CFLAGS1 = -Wall -Werror -O2 -g3 -std=c17 -pedantic -lrt
 DEPS = llist_event.h wheel_timer.h utility.h
 
 %.o: %.c $(DEPS)
