@@ -21,7 +21,7 @@ int main(void) {
 	slot_scheduler(&event_two, 30, 0, wheel_timer);
 	start_timer(wheel_timer);
 
-	sleep(3600);
+	sleep(86400);
 
 	free(wheel_timer);
 
